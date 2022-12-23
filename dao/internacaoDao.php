@@ -258,7 +258,7 @@ class InternacaoDAO implements InternacaoDAOInterface
         $stmt->execute();
 
         // Mensagem de sucesso por adicionar internacao
-        //$this->message->setMessage("internacao adicionado com sucesso!", "success", "back");
+        $this->message->setMessage("internacao adicionado com sucesso!", "success", "cad_internacao.php");
     }
 
     public function update(Internacao $internacao)
@@ -273,7 +273,7 @@ class InternacaoDAO implements InternacaoDAOInterface
         acoes_int = :acoes_int,
         acomodacao_int = :acomodacao_int,
         modo_internacao_int = :modo_internacao_int,
-        modo_internacao_int = :modo_internacao_int,
+        tipo_admissao_int = :tipo_admissao_int,
         data_intern_int = :data_intern_int,
         data_visita_int = :data_visita_int,
         especialidade_int = :especialidade_int,
@@ -294,6 +294,7 @@ class InternacaoDAO implements InternacaoDAOInterface
         $stmt->bindParam(":modo_internacao_int", $internacao->modo_internacao_int);
         $stmt->bindParam(":acomodacao_int", $internacao->acomodacao_int);
         $stmt->bindParam(":modo_internacao_int", $internacao->modo_internacao_int);
+        $stmt->bindParam(":tipo_admissao_int", $internacao->tipo_admissao_int);
         $stmt->bindParam(":data_intern_int", $internacao->data_intern_int);
         $stmt->bindParam(":data_visita_int", $internacao->data_visita_int);
         $stmt->bindParam(":especialidade_int", $internacao->especialidade_int);
@@ -302,6 +303,24 @@ class InternacaoDAO implements InternacaoDAOInterface
         $stmt->bindParam(":grupo_patologia_int", $internacao->grupo_patologia_int);
         $stmt->bindParam(":fk_user_int", $internacao->fk_user_int);
         $stmt->bindParam(":id_internacao_int", $internacao->id_internacao_int);
+
+        $stmt->execute();
+
+        // Mensagem de sucesso por editar internacao
+        $this->message->setMessage("internacao atualizado com sucesso!", "success", "list_internacao.php");
+    }
+    public function alta(Internacao $internacao)
+    {
+
+        $stmt = $this->conn->prepare("UPDATE tb_internacao SET
+       
+        internado_int = :internado_int
+       
+        WHERE id_internacao = :id_internacao 
+      ");
+
+        $stmt->bindParam(":internado_int", $internacao->internado_int);
+        $stmt->bindParam(":id_internacao", $internacao->id_internacao);
 
         $stmt->execute();
 

@@ -46,7 +46,14 @@ if (empty($id_antecedente)) {
             <br>
     </div>
     </form>
-</div>
+    <?php if ($cad_usuario->rowCount()) {
+        unset($dados);
+        $_SESSION['msg'] =  "<p style='color: green;'>Usuário cadastrado com sucesso!</p>";
+        header("Location: index.php");
+    } else {
+        echo "<p style='color: #f00;'>Erro: Usuário não cadastrado com sucesso!</p>";
+    } ?>
+
 </div>
 
 <script>

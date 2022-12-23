@@ -29,6 +29,7 @@ $id_internacao = filter_input(INPUT_GET, "id_internacao");
 
 //$internacao = $internacaoDao->joininternacaoHospitalShow($id_internacao);
 $internacao = $internacaoDao->findById($id_internacao);
+
 ?>
 
 <!-- formulario update -->
@@ -50,7 +51,7 @@ $internacao = $internacaoDao->findById($id_internacao);
                 <div class="form-group col-sm-3">
                     <label class="control-label col-sm-3 " for="fk_hospital_int">Hospital</label>
                     <select class="form-control" id="fk_hospital_int" name="fk_hospital_int">
-                        <option value="<?= $internacao->fk_hospital_int ?>"><?= $internacao->nome_hosp ?></option>
+                        <option value="<?= $internacaos->fk_hospital_int ?>"><?= $internacao->nome_hosp ?></option>
                         <?php foreach ($hospitals as $hospital) : ?>
                             <option value="<?= $hospital['id_hospital'] ?>"><?= $hospital['nome_hosp'] ?></option>
                         <?php endforeach; ?>
@@ -58,11 +59,11 @@ $internacao = $internacaoDao->findById($id_internacao);
                 </div>
 
                 <div class="form-group col-sm-3">
-                    <label class="control-label" for="fk_paciente">Paciente</label>
-                    <select class="form-control" id="fk_paciente" name="fk_paciente">
-                        <option value="<?= $internacao->fk_paciente ?>"><?= $internacao->fk_paciente ?></option>
+                    <label class="control-label" for="fk_paciente_int">Paciente</label>
+                    <select class="form-control" id="fk_paciente_int" name="fk_paciente_int">
+                        <option value="<?= $internacao->fk_paciente_int ?>"><?= $internacao->fk_paciente_int ?></option>
                         <?php foreach ($pacientes as $paciente) : ?>
-                            <option value="<?= $paciente["id_paciente"] ?>"><?= $paciente["nome_pac"] ?></option>
+                            <option value="<?= $paciente["nome_pac"] ?>"><?= $paciente["nome_pac"] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -104,7 +105,7 @@ $internacao = $internacaoDao->findById($id_internacao);
                 <div class="form-group col-sm-2">
                     <label class="control-label" for="especialidade">Especialidade</label>
                     <select class="form-control" id="especialidade" name="especialidade">
-                        <option value="<?= $internacao->especialidade ?>"><?= $internacao->especialidade ?></option>
+                        <option value="<?= $internacao->especialidade_int ?>"><?= $internacao->especialidade_int ?></option>
                         <option value="Ginecologia">Ginecologia</option>
                         <option value="Cardiologia">Cardiologia</option>
                         <option value="Ortopedia">Ortopedia</option>
@@ -112,12 +113,12 @@ $internacao = $internacaoDao->findById($id_internacao);
                 </div>
                 <div class="form-group col-sm-3">
                     <label for="titular">Médico</label>
-                    <input type="text" value="<?= $internacao->titular ?>" class="form-control" id="titular" name="titular" placeholder="Digite o nome do médico">
+                    <input type="text" value="<?= $internacao->titular_int ?>" class="form-control" id="titular" name="titular" placeholder="Digite o nome do médico">
                 </div>
                 <div class="form-group col-sm-2">
-                    <label class="control-label" for="modo_admissao">Modo Admissão</label>
-                    <select class="form-control" id="modo_admissao" name="modo_admissao">
-                        <option value="<?= $internacao->modo_admissao ?>"><?= $internacao->modo_admissao ?></option>
+                    <label class="control-label" for="tipo_admissao_int">Modo Admissão</label>
+                    <select class="form-control" id="tipo_admissao_int" name="tipo_admissao_int">
+                        <option value="<?= $internacao->tipo_admissao_int ?>"><?= $internacao->tipo_admissao_int ?></option>
                         <option value="Clínica">Clínica</option>
                         <option value="Pediatria">Pediatria</option>
                         <option value="Ortopedia">Ortopedia</option>
@@ -125,20 +126,20 @@ $internacao = $internacaoDao->findById($id_internacao);
                     </select>
                 </div>
                 <div class="form-group col-sm-2">
-                    <label class="control-label" for="tipo_internacao">Tipo Internação</label>
-                    <select class="form-control" id="tipo_internacao" name="tipo_internacao">
-                        <option value="<?= $internacao->tipo_internacao ?>"><?= $internacao->tipo_internacao ?></option>
+                    <label class="control-label" for="modo_internacao_int">Tipo Internação</label>
+                    <select class="form-control" id="modo_internacao_int" name="modo_internacao_int">
+                        <option value="<?= $internacao->modo_internacao_int ?>"><?= $internacao->modo_internacao_int ?></option>
                         <option value="Eletiva">Eletiva</option>
                         <option value="Urgência">Urgência</option>
 
                     </select>
                 </div>
                 <div class="form-group col-sm-2">
-                    <label class="control-label" for="fk_patologia1">Patologia</label>
-                    <select class="form-control" id="fk_patologia1" name="fk_patologia1">
-                        <option value="<?= $internacao->fk_patologia1 ?>"><?= $internacao->fk_patologia1 ?></option>
+                    <label class="control-label" for="fk_patologia1_int">Patologia</label>
+                    <select class="form-control" id="fk_patologia1_int" name="fk_patologia1_int">
+                        <option value="<?= $internacao->fk_patologia_int ?>"><?= $internacao->fk_patologia_int ?></option>
                         <?php foreach ($patologias as $patologia) : ?>
-                            <option value="<?= $patologia['id_patologia'] ?>"><?= $patologia["patologiaNome"] ?></option>
+                            <option value="<?= $patologia['id_patologia'] ?>"><?= $patologia["patologia_pat"] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -147,14 +148,14 @@ $internacao = $internacaoDao->findById($id_internacao);
                     <select class="form-control" id="fk_patologia2" name="fk_patologia2">
                         <option value="<?= $internacao->fk_patologia2 ?>"><?= $internacao->fk_patologia2 ?></option>
                         <?php foreach ($patologias as $patologia) : ?>
-                            <option value="<?= $patologia["id_patologia"] ?>"><?= $patologia["patologiaNome"] ?></option>
+                            <option value="<?= $patologia["id_patologia"] ?>"><?= $patologia["patologia_pat"] ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="form-group col-sm-2">
-                    <label class="control-label" for="grupo_patologia">Grupo Patologia</label>
-                    <select class="form-control" id="grupo_patologia" name="grupo_patologia">
-                        <option value="<?= $internacao->grupo_patologia ?>"><?= $internacao->grupo_patologia ?></option>
+                    <label class="control-label" for="grupo_patologia_int">Grupo Patologia</label>
+                    <select class="form-control" id="grupo_patologia_int" name="grupo_patologia_int">
+                        <option value="<?= $internacao->grupo_patologia_int ?>"><?= $internacao->grupo_patologia_int ?></option>
                         <option value="Cardiológica">Cardiológica</option>
                         <option value="Pediatria">Pediatria</option>
                         <option value="Ortopedia">Ortopedia</option>
@@ -164,12 +165,12 @@ $internacao = $internacaoDao->findById($id_internacao);
 
                 <div class="form-group row">
                     <div>
-                        <label for="acoes">Relatório Auditoria</label>
-                        <textarea type="textarea" value="<?= $internacao->rel_auditoria ?>" class="form-control" id="rel_auditoria" name="rel_auditoria" placeholder="Relatório da auditoria"><?= $internacao->rel_auditoria ?></textarea>
+                        <label for="rel_int">Relatório Auditoria</label>
+                        <textarea type="textarea" value="<?= $internacao->rel_int ?>" class="form-control" id="rel_int" name="rel_int" placeholder="Relatório da auditoria"><?= $internacao->rel_int ?></textarea>
                     </div>
                     <div>
-                        <label for="acoes">Ações Auditoria</label>
-                        <textarea type="textarea" value="<?= $internacao->acoes ?>" class="form-control" id="acoes" name="acoes" placeholder="Ações de auditoria"><?= $internacao->acoes ?></textarea>
+                        <label for="acoes_int">Ações Auditoria</label>
+                        <textarea type="textarea" value="<?= $internacao->acoes_int ?>" class="form-control" id="acoes_int" name="acoes_int" placeholder="Ações de auditoria"><?= $internacao->acoes_int ?></textarea>
                     </div>
 
                 </div>

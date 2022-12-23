@@ -61,7 +61,7 @@ if ($type === "create") {
         $internacaoDao->create($internacao);
     } else {
         header("Location: javascript:history.back(1)");
-        //$message->setMessage("Você precisa adicionar pelo menos: nome da internacao!", "error", "back");
+        $message->setMessage("Você precisa adicionar pelo menos: nome da internacao!", "error", "list_internacao.php");
     }
 } else if ($type === "update") {
 
@@ -94,8 +94,8 @@ if ($type === "create") {
     $internacaoData->fk_patologia_int = $fk_patologia_int;
     $internacaoData->fk_patologia2 = $fk_patologia2;
     $internacaoData->internado_int = $internado_int;
-    $internacaoData->tipo_internacao_int = $tipo_internacao_int;
-    $internacaoData->modo_admissao_int = $modo_admissao_int;
+    $internacaoData->modo_internacao_int = $modo_internacao_int;
+    $internacaoData->tipo_admissao_int = $tipo_admissao_int;
     $internacaoData->grupo_patologia_int = $grupo_patologia_int;
     $internacaoData->especialidade_int = $especialidade_int;
     $internacaoData->data_visita_int = $data_visita_int;

@@ -76,7 +76,7 @@
 }
 
 .formulario input[type="date"] {
-    background-color: rgb(241, 240, 240);
+    background-color: rgb(189, 189, 189);
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
     font-size: .7em;
     font-weight: normal;
@@ -85,7 +85,7 @@
 }
 
 .formulario input[type="textarea"] {
-    background-color: rgb(241, 240, 240);
+    background-color: rgb(189, 189, 189);
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
     font-size: .7em;
     font-weight: normal;

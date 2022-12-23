@@ -11,23 +11,23 @@ include_once("templates/header.php");
 # seleciona os registros do banco de dados pelo inicio e limitando pelo limite da variável limite
 ?>
 <div class="container-fluid py-1">
-    <h3 class="page-title">Relação hospitais</h3>
+    <h3 class="page-title">Relação de Pacientes</h3>
     <hr>
     <div class="menu_pesquisa">
         <form method="post">
-            <input type="text" name="pesquisa_hosp" id="pesquisa_hosp" placeholder="Pesquisa por paciente">
+            <input type="text" name="pesquisa_pac" id="pesquisa_pac" placeholder="Pesquisa por paciente">
             <button style="margin:10px" type="submit" class="btn-sm btn-info">Buscar</button>
         </form>
 
         <?php
-        $pesquisa_hosp = filter_input(INPUT_POST, "pesquisa_hosp");
+        $pesquisa_pac = filter_input(INPUT_POST, "pesquisa_pac");
         ?>
     </div>
     <?php
-    if (!$pesquisa_hosp) {
+    if (!$pesquisa_pac) {
         $sql = "SELECT * FROM tb_paciente ORDER BY id_paciente ASC LIMIT " . $inicio . ", " . $limite;
     } else {
-        $sql = "SELECT * FROM tb_paciente WHERE nome_hosp like '$pesquisa_hosp%' ORDER BY id_paciente desc";
+        $sql = "SELECT * FROM tb_paciente WHERE nome_pac like '$pesquisa_pac%' ORDER BY nome_pac desc";
     }
 
     try {
@@ -78,9 +78,6 @@ include_once("templates/header.php");
                             <a href="<?= $BASE_URL ?>show_paciente.php?id_paciente=<?= $paciente["id_paciente"] ?>"><i style="color:orange; margin-right:10px" class="aparecer-acoes fas fa-eye check-icon"></i></a>
 
                             <a href="<?= $BASE_URL ?>edit_paciente.php?id_paciente=<?= $paciente["id_paciente"] ?>"><i style="color:blue" name="type" value="edite" class="aparecer-acoes far fa-edit edit-icon"></i></a>
-
-                            <!--<a href="<?= $BASE_URL ?>process_paciente.php?id_paciente=<?= $paciente["id_paciente"] ?>"><i style="color:red" name="type" value="deletar" class="aparecer-acoes fas fa-times delete-icon"></i></a>
-                -->
                             <form class="d-inline-block delete-form" action="del_paciente.php" method="POST">
                                 <input type="hidden" name="type" value="delete">
                                 <input type="hidden" name="id_paciente" value="<?= $paciente["id_paciente"] ?>">
