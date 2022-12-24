@@ -1,4 +1,6 @@
 <?php
+
+//teste/s
 require_once("templates/header.php");
 require_once("dao/antecedenteDao.php");
 require_once("models/message.php");
